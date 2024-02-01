@@ -42,7 +42,7 @@ _start:
     mov rcx, 72
     call append
 
-    mov rcx, 0
+    mov rcx, 2
     call get
     
     mov [rel test_char], rax
@@ -139,18 +139,6 @@ find_next_address:
 
     mov qword [rel iterate_point], rdx
     mov qword [rel next_address], rdx
-    
-    loop find_next_address
-    call set_iterate_point_start
-    ret
-
-find_last_address:
-    mov r8, qword [rel iterate_point]
-    mov rdx, qword [r8]
-
-    mov qword [rel iterate_point], rdx
-    sub rdx, 8
-    mov qword [rel remove_address], rdx
     
     loop find_next_address
     call set_iterate_point_start
